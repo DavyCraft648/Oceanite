@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace DavyCraft648\Oceanite\item;
 
@@ -11,10 +12,6 @@ class OceaniteIngot extends \pocketmine\item\Item implements \customiesdevs\cust
 
 	public function __construct(ItemIdentifier $identifier, string $name = "Unknown"){
 		parent::__construct($identifier, $name);
-		$this->initComponent("seanite", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS, "itemGroup.name.diamond"));
-	}
-
-	public function isFireProof() : bool{ // pm5 feature
-		return true;
+		$this->initComponent("oceanite_ingot", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS));
 	}
 }
