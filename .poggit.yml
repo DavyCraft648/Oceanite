@@ -2,6 +2,7 @@
 build-by-default: true
 branches:
 - master
+- rewrite-poggit
 projects:
   Oceanite:
     path: ""
