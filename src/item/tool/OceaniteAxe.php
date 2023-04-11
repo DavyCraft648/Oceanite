@@ -3,15 +3,12 @@ declare(strict_types=1);
 
 namespace DavyCraft648\Oceanite\item\tool;
 
-use customiesdevs\customies\item\component\DiggerComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponentsTrait;
-use pocketmine\block\VanillaBlocks;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ToolTier;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\ListTag;
-use function var_dump;
 
 class OceaniteAxe extends \pocketmine\item\Axe implements \customiesdevs\customies\item\ItemComponents{
 	use ItemComponentsTrait {
@@ -21,7 +18,6 @@ class OceaniteAxe extends \pocketmine\item\Axe implements \customiesdevs\customi
 	public function __construct(ItemIdentifier $identifier, string $name){
 		parent::__construct($identifier, $name, ToolTier::DIAMOND());
 		$this->initComponent("oceanite_axe", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_EQUIPMENT, CreativeInventoryInfo::GROUP_AXE));
-		$this->addComponent((new DiggerComponent())->withBlocks(12, VanillaBlocks::OAK_LOG()));
 	}
 
 	public function getMaxDurability() : int{
