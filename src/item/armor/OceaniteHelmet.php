@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace DavyCraft648\Oceanite\item\armor;
 
-use customiesdevs\customies\item\component\KnockbackResistanceComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\entity\effect\EffectInstance;
@@ -17,9 +16,8 @@ class OceaniteHelmet extends \pocketmine\item\Armor implements \customiesdevs\cu
 	use ItemComponentsTrait;
 
 	public function __construct(ItemIdentifier $identifier, string $name = "Unknown"){
-		parent::__construct($identifier, $name, new ArmorTypeInfo(4, 407, ArmorInventory::SLOT_HEAD));
+		parent::__construct($identifier, $name, new ArmorTypeInfo(4, 407, ArmorInventory::SLOT_HEAD, 3, true));
 		$this->initComponent("oceanite_helmet", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_EQUIPMENT, CreativeInventoryInfo::GROUP_HELMET));
-		$this->addComponent(new KnockbackResistanceComponent(0.2));
 	}
 
 	public function onTickWorn(Living $entity) : bool{
@@ -27,6 +25,6 @@ class OceaniteHelmet extends \pocketmine\item\Armor implements \customiesdevs\cu
 			$entity->getEffects()->add(new EffectInstance(VanillaEffects::WATER_BREATHING(), 40, 0, false));
 		}
 		$entity->getEffects()->remove(VanillaEffects::MINING_FATIGUE());
-		return true;
+		return false;
 	}
 }

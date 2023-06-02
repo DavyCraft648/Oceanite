@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace DavyCraft648\Oceanite;
 
 use customiesdevs\customies\item\CustomiesItemFactory;
-use DavyCraft648\Oceanite\item\armor\OceaniteArmor;
 use DavyCraft648\Oceanite\item\armor\OceaniteBoots;
 use DavyCraft648\Oceanite\item\armor\OceaniteChestplate;
 use DavyCraft648\Oceanite\item\armor\OceaniteHelmet;
@@ -15,6 +14,7 @@ use DavyCraft648\Oceanite\item\tool\OceaniteHoe;
 use DavyCraft648\Oceanite\item\tool\OceanitePickaxe;
 use DavyCraft648\Oceanite\item\tool\OceaniteShovel;
 use DavyCraft648\Oceanite\item\tool\OceaniteSword;
+use pocketmine\crafting\ExactRecipeIngredient;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\crafting\ShapelessRecipeType;
@@ -31,9 +31,7 @@ final class Main extends \pocketmine\plugin\PluginBase{
 		$this->saveResource("Oceanite V1.1.mcpack");
 		$rpManager = $this->getServer()->getResourcePackManager();
 		$rpManager->setResourceStack(array_merge($rpManager->getResourceStack(), [new ZippedResourcePack(Path::join($this->getDataFolder(), "Oceanite V1.1.mcpack"))]));
-		$serverForceResources = new \ReflectionProperty($rpManager, "serverForceResources");
-		$serverForceResources->setAccessible(true);
-		$serverForceResources->setValue($rpManager, true);
+		(new \ReflectionProperty($rpManager, "serverForceResources"))->setValue($rpManager, true);
 
 		CustomiesItemFactory::getInstance()->registerItem(OceaniteIngot::class, "oceanite:oceanite_ingot", "Oceanite Ingot");
 		CustomiesItemFactory::getInstance()->registerItem(OceaniteBoots::class, "oceanite:oceanite_boots", "Oceanite Boots");
@@ -56,98 +54,85 @@ final class Main extends \pocketmine\plugin\PluginBase{
 						"CBC"
 					],
 					[
-						"A" => VanillaItems::HEART_OF_THE_SEA(),
-						"B" => VanillaItems::PRISMARINE_SHARD(),
-						"C" => VanillaItems::GOLD_INGOT()
+						"A" => new ExactRecipeIngredient(VanillaItems::HEART_OF_THE_SEA()),
+						"B" => new ExactRecipeIngredient(VanillaItems::PRISMARINE_SHARD()),
+						"C" => new ExactRecipeIngredient(VanillaItems::GOLD_INGOT())
 					],
 					[$oceaniteIngot]
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_BOOTS(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_BOOTS()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_boots")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_CHESTPLATE(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_CHESTPLATE()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_chestplate")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_HELMET(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_HELMET()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_helmet")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_LEGGINGS(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_LEGGINGS()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_leggings")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_AXE(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_AXE()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_axe")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_HOE(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_HOE()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_hoe")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_PICKAXE(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_PICKAXE()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_pickaxe")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_SHOVEL(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_SHOVEL()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_shovel")],
 					ShapelessRecipeType::CRAFTING()
 				));
 				$this->getServer()->getCraftingManager()->registerShapelessRecipe(new ShapelessRecipe(
 					[
-						VanillaItems::DIAMOND_SWORD(),
-						clone $oceaniteIngot
+						new ExactRecipeIngredient(VanillaItems::DIAMOND_SWORD()),
+						new ExactRecipeIngredient($oceaniteIngot)
 					],
 					[CustomiesItemFactory::getInstance()->get("oceanite:oceanite_sword")],
 					ShapelessRecipeType::CRAFTING()
 				));
 			}), 2);
 		}
-
-		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() : void{
-			if($this->getServer()->getTicksPerSecond() < 17){
-				return;
-			}
-			foreach($this->getServer()->getOnlinePlayers() as $player){
-				foreach($player->getArmorInventory()->getContents() as $item){
-					if($item instanceof OceaniteArmor){
-						$item->onTickWorn($player);
-					}
-				}
-			}
-		}), 20);
 	}
 }

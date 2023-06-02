@@ -14,4 +14,8 @@ class OceaniteIngot extends \pocketmine\item\Item implements \customiesdevs\cust
 		parent::__construct($identifier, $name);
 		$this->initComponent("oceanite_ingot", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS));
 	}
+
+	public function isFireProof() : bool{
+		return true;
+	}
 }

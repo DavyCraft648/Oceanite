@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace DavyCraft648\Oceanite\item\tool;
 
+use customiesdevs\customies\item\component\HandEquippedComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\item\ItemIdentifier;
@@ -18,6 +19,7 @@ class OceanitePickaxe extends \pocketmine\item\Pickaxe implements \customiesdevs
 	public function __construct(ItemIdentifier $identifier, string $name){
 		parent::__construct($identifier, $name, ToolTier::DIAMOND());
 		$this->initComponent("oceanite_pickaxe", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_EQUIPMENT, CreativeInventoryInfo::GROUP_PICKAXE));
+		$this->addComponent(new HandEquippedComponent(true));
 	}
 
 	public function getMaxDurability() : int{

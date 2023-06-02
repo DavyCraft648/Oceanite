@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace DavyCraft648\Oceanite\item\tool;
 
+use customiesdevs\customies\item\component\HandEquippedComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\item\ItemIdentifier;
@@ -18,6 +19,7 @@ class OceaniteSword extends \pocketmine\item\Sword implements \customiesdevs\cus
 	public function __construct(ItemIdentifier $identifier, string $name){
 		parent::__construct($identifier, $name, ToolTier::DIAMOND());
 		$this->initComponent("oceanite_sword", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_EQUIPMENT, CreativeInventoryInfo::GROUP_SWORD));
+		$this->addComponent(new HandEquippedComponent(true));
 	}
 
 	public function getMaxDurability() : int{
