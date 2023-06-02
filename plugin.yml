@@ -1,15 +1,12 @@
 name: Oceanite
 main: DavyCraft648\Oceanite\Main
 src-namespace-prefix: DavyCraft648\Oceanite
-version: 1.0.0
-api: [ "4.11.0", "5.0.0" ]
+version: 1.1.1
+api: [ "5.0.0" ]
 depend:
   - Customies
 
 authors:
   - DavyCraft648
-  - TrueCowboy
-description: |
-  PocketMine plugin version of Oceanite add-on.
-  Original add-on created by TrueCowboy, https://mcpedl.com/oceanite/
+description: Upgrade your Diamond tools and armor with Oceanite material!
 website: https://github.com/DavyCraft648/Oceanite
